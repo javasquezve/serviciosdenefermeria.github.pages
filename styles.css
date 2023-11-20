@@ -1,0 +1,189 @@
+/* Aplica justificación a todos los párrafos */
+p {
+    text-align: justify;
+}
+
+/* Resto de tus estilos... */
+
+#redesSociales {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 40px; /* Ajusta el tamaño de los iconos según sea necesario */
+    height: 40px;
+    border-radius: 50%; /* Esto da un aspecto redondeado a los iconos */
+}
+
+
+/* Estilo para la lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que la lightbox esté sobre otros elementos */
+}
+
+.lightbox img {
+    max-width: 90vw; /* 90% del ancho de la ventana gráfica */
+    max-height: 90vh; /* 90% de la altura de la ventana gráfica */
+    border: 2px solid #fff;
+    box-shadow: 0 0 25px #000;
+    cursor: pointer;
+}
+
+/* Estilo para cerrar la lightbox */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+/* Estilo para la galería de imágenes al costado */
+#sideGallery {
+    width: 100%; /* Ancho completo del contenedor principal */
+    overflow-x: auto; /* Barra de desplazamiento horizontal si es necesario */
+    text-align: center; /* Centra los elementos hijos horizontalmente */
+}
+
+#sideGallery h2 {
+    text-align: center; /* Centra el texto "Galería de Imágenes" */
+}
+
+#sideGallery ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Diseño flexible para los elementos de la lista */
+    justify-content: center; /* Centra los elementos horizontalmente dentro del contenedor */
+}
+
+#sideGallery li {
+    margin-right: 10px; /* Espacio entre cada imagen */
+}
+
+#sideGallery img {
+    width: 200px; /* Ancho fijo para cada imagen */
+    height: 150px; /* Altura fija para mantener el mismo tamaño */
+    border: 1px solid #ccc; /* Añade un borde a las imágenes */
+}
+
+
+
+/* Estilo para el logo en el encabezado */
+#logo {
+    width: 160px; /* Ajusta el ancho según sea necesario */
+    height: auto;
+    margin-right: 10px; /* Margen a la derecha para separar el logo del texto */
+}
+/* Estilo para las imágenes laterales */
+#sideImages img {
+    width: 100%; /* Hace que las imágenes ocupen el ancho completo del contenedor */
+    margin-bottom: 10px; /* Margen inferior para separar las imágenes */
+}
+#chat-container {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 20px;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+#user-input {
+    margin-top: 10px;
+}
+
+#enviar-btn {
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}/* styles.css */
+
+body {
+    font-family: 'arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #3498db; /* Azul */
+    color: #fff; /* Blanco */
+}
+
+header {
+    background-color: #2980b9; /* Azul más oscuro */
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+section {
+    margin: 20px;
+}
+
+#patientData, #servicesEnfermeria, #servicesOxigeno, #payment {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333; /* Color de texto más oscuro para contrastar con el fondo blanco */
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #2980b9; /* Azul más oscuro */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #2980b9; /* Azul más oscuro */
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

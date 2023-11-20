@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Enfermería</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+    <header>
+      <img src="enfer.jpg" alt="Logo de la empresa" id="logo">
+        <h1>ID ENFERMERIA</h1>
+        <h2> "IMPORTANTE"</h2> </p> Los servicios funciona unicamente para Bogota y Sabana Norte
+         municipios como: Tocancipa, Gachancipa, Zipaquira, Tabio, Cajica, Chia,Sopo,Cogua.</p>
+
+    </header>
+
+
+
+        <!-- Galería de imágenes al costado -->
+       <aside id="sideGallery">
+           <h2>Galería de Imágenes</h2>
+           <ul>
+               
+               <li><img src="Oxigeno.jpg" alt="Imagen lateral 2"></li>
+               <li><img src="nebulizaciones.jpg" alt="Imagen lateral 3"></li>
+               <li><img src="servicio.jpg" alt="Imagen lateral 4"></li>
+               <li><img src="tension.jpg" alt="Imagen lateral 5"></li>
+               <!-- Agrega más elementos <li> según sea necesario -->
+           </ul>
+       </aside>
+   </main>
+
+    <section id="patientData" class="section">
+        <h2>Datos Personales</h2>
+        <form id="patientForm" onsubmit="submitForm(event)">
+            <label for="patientName">Nombres y Apellidos:</label>
+            <input type="text" id="patientName" name="patientName" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="location">Ubicación de la clínica a prestar el servicio:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="admissionReason">Motivo de Ingreso a La clinica:</label>
+            <input type="text" id="admissionReason" name="admissionReason" required>
+
+            <label for="patientDateOfBirth">Fecha del servicio:</label>
+            <input type="date" id="patientDateOfBirth" name="patientDateOfBirth" required>
+
+            <button type="submit" onclick="sendEmail()">Enviar Datos</button>
+        </form>
+    </section>
+
+
+    <section id="servicesEnfermeria" class="section">
+        <h2>Servicio de Enfermería en Clinica /Hospital</h2>
+        <form id="enfermeriaForm" onsubmit="submitEnfermeriaForm(event)">
+            <label for="enfermeriaService">Selecciona un servicio de enfermería:</label>
+            <select id="enfermeriaService" name="service" onchange="updatePrice('enfermeria'); updateDateTimeOptions('enfermeria')">
+              <option value="ninguno">Ninguno</option>
+                <option value="6horas">Servicio de Enfermería 8 horas</option>
+                <option value="12horas">Servicio de Enfermería 12 horas</option>
+                <option value="24horas">Servicio de Enfermería 24 horas</option>
+
+            </select>
+
+            <div id="enfermeriaPrice"></div>
+
+            <label for="enfermeriaDateTime">Selecciona  hora:</label>
+            <select id="enfermeriaDateTime" name="dateTime" required></select>
+
+            <button type="submit" onclick="redirectToEnfermeriaPayment()">Realizar Pago (Enfermería)</button>
+
+        </form>
+    </section>
+
+    <section id="servicesOxigeno" class="section">
+        <h2>Alquiler de Oxígeno</h2>
+        <form id="oxigenoForm" onsubmit="submitOxigenoForm(event)">
+            <label for="oxigenoService">Selecciona un alquiler:</label>
+            <select id="oxigenoService" name="service" onchange="updatePrice('oxigeno'); updateDateTimeOptions('oxigeno')">
+              <option value="ninguno">Ninguno</option>
+                <option value="1semana">1 semana </option>
+                <option value="1mes">1 mes </option>
+
+            </select>
+
+            <div id="oxigenoPrice"></div>
+
+
+
+            <button type="submit" onclick="redirectToOxigenoPayment()">Realizar Pago (Oxígeno)</button>
+        </form>
+    </section>
+
+    <section id="chatbot" class="section">
+    <h2>Chat Bot</h2>
+    <form id="chatForm" onsubmit="event.preventDefault(); enviarPregunta();">
+        <input type="text" id="pregunta" placeholder="Escribe tu pregunta aquí..." required>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="sugerencias"></div> <!-- Contenedor de sugerencias -->
+    <p id="respuesta"></p>
+</section>
+
+  <script>
+      // ... (código anterior) ...
+
+      // Función para enviar la pregunta al chatbot y recibir la respuesta
+      function enviarPregunta() {
+          const preguntaInput = document.getElementById('pregunta');
+          const respuestaParrafo = document.getElementById('respuesta');
+
+          // Obtener la pregunta del usuario
+          const pregunta = preguntaInput.value.toLowerCase(); // Convertir a minúsculas para hacer la comparación más fácil
+
+          // Definir respuestas del chatbot
+          const respuestas = {
+              'hola': '¡Hola! ¿En qué puedo ayudarte?',
+              '¿cómo estás?': 'Estoy bien, gracias por preguntar. ¿Y tú?',
+              // Agrega más respuestas según sea necesario
+          };
+
+          // Verificar si hay una respuesta predefinida para la pregunta
+          if (respuestas.hasOwnProperty(Cuanto tarda en llegar el servicio)) {
+              // Mostrar la respuesta en el elemento HTML
+
+              respuestaParrafo.textContent = "En el transcursos de 3 horas";
+          } else {
+              // Si no hay una respuesta predefinida, mostrar un mensaje genérico
+              respuestaParrafo.textContent = 'Lo siento, no entendí la pregunta. ¿Puedes ser más específico?';
+          }
+
+          // Limpiar el campo de entrada después de enviar la pregunta
+          preguntaInput.value = '';
+      }
+
+      // ... (código posterior) ...
+  </script>
+  <script>
+    // ... (código anterior) ...
+
+    // Función para enviar la pregunta al chatbot y recibir la respuesta
+    function enviarPregunta() {
+        const preguntaInput = document.getElementById('pregunta');
+        const respuestaParrafo = document.getElementById('respuesta');
+
+        // Obtener la pregunta del usuario
+        const pregunta = preguntaInput.value.toLowerCase(); // Convertir a minúsculas para hacer la comparación más fácil
+
+        // Definir respuestas del chatbot
+        const respuestas = {
+            'hola': '¡Hola! ¿En qué puedo ayudarte?',
+            '¿cómo estás?': 'Estoy bien, gracias por preguntar. ¿Y tú?',
+            // Agrega más respuestas según sea necesario
+        };
+
+        // Verificar si hay una respuesta predefinida para la pregunta
+        if (respuestas.hasOwnProperty(pregunta)) {
+            // Mostrar la respuesta en el elemento HTML
+            respuestaParrafo.textContent = respuestas[pregunta];
+        } else {
+            // Si no hay una respuesta predefinida, verificar si es un saludo genérico
+            if (pregunta.includes('hola')) {
+                respuestaParrafo.textContent = '¡Hola! ¿En qué puedo ayudarte?';
+            } else {
+                // Si no hay una respuesta predefinida ni es un saludo, mostrar un mensaje genérico
+                respuestaParrafo.textContent = 'Lo siento, no entendí la pregunta. ¿Puedes ser más específico?';
+            }
+        }
+
+        // Limpiar el campo de entrada después de enviar la pregunta
+        preguntaInput.value = '';
+    }
+
+    // ... (códiscript>
+    async function enviarPregunta() {
+        const preguntaInput = document.getElementById('pregunta');
+        const respuestaParrafo = document.getElementById('respuesta');
+
+        const pregunta = preguntaInput.value.toLowerCase();
+
+        try {
+            let respuesta = '';
+
+            // Lógica para manejar diferentes preguntas
+            if (pregunta.includes('hola')) {
+                respuesta = '¡Hola! ¿En qué puedo ayudarte?';
+            } else if (pregunta.includes('servicio de enfermeria') && pregunta.includes('tardara 3 horas')) {
+                respuesta = 'El servicio de enfermería tardará aproximadamente 3 horas en llegar después de solicitarlo.';
+            } else if (pregunta.includes('empresa') && pregunta.includes('servicios de enfermeria') && pregunta.includes('clinica de alta calidad')) {
+                respuesta = 'Somos una empresa comprometida con brindar servicios de enfermería de alta calidad exclusivamente en clínicas de alta calidad.';
+            } else if (pregunta.includes('otros servicios') && pregunta.includes('oxigeno') && pregunta.includes('servicio de ambulancia')) {
+                respuesta = 'Ofrecemos otros servicios como alquiler de oxígeno y servicio de ambulancia. ¿En qué más puedo ayudarte?';
+            } else {
+                // Respuesta genérica para otras preguntas
+                respuesta = 'Lo siento, no tengo información sobre esa pregunta en este momento. ¿Puedo ayudarte con algo más?';
+            }
+
+            respuestaParrafo.textContent = respuesta;
+        } catch (error) {
+            console.error('Error al procesar la pregunta:', error);
+            respuestaParrafo.textContent = 'Lo siento, hubo un error al procesar tu pregunta.';
+        }
+
+        preguntaInput.value = '';
+    }
+</script>
+</script>
+<section id="aboutUs" class="section">
+    <h2>Sobre Nosotros</h2>
+    <p>Somos una empresa responsable y leal con el usuario, tu socio confiable en servicios de enfermería domiciliaria. En Cuidado unicamente en clinica u hospitales, entendemos la importancia de brindar atención de calidad en el entorno para sentir cómodidad y seguridad. Nos enorgullece ser una empresa líder en el cuidado de la salud, la excelencia, la compasión y la atención personalizada.</p>
+    <p>Creemos en devolver a la comunidad y abogar por el acceso equitativo a servicios de salud de calidad. Colaboramos con organizaciones locales para apoyar iniciativas comunitarias y trabajamos para mejorar el acceso a la atención médica. </p>
+    <h2> Contacto</h2>
+
+    <a href="https://wa.me/573223757400" target="_blank" style="display: inline-block;">
+  <img src="wasat.jpg" alt="Contacto por WhatsApp" style="width: 80px; height: 30px;">
+</a>
+<a href="enfermeria24horaszip@gmail.com" target="_blank" style="display: inline-block;">
+<img src="mail.jpg" alt="Contacto por mail" style="width: 70px; height: 60px;">
+</a>
+<p> 322 3757400    enfermeria24horaszip@gmail.com </p>
+</section>
+
+<section id="redesSociales" class="section">
+    <h2>¡Síguenos en Redes Sociales!</h2>
+    <div class="social-icons">
+        <a href="https://m.facebook.com/story.php?story_fbid=pfbid02Ybh5o3gszasumoQZHAmijTPoyQjsZ58BNpgVindBtxDWwG1sWBLQyAePNEMmTWEwl&id=108536487718836&sfnsn=scwspwa&mibextid=RUbZ1f" target="_blank">
+            <img src="facebook.jpg" alt="Facebook">
+        </a>
+
+        <a href="https://instagram.com/id.enfermeria24h_?utm_source=qr&igshid=MzNlNGNkZWQ4Mg==" target="_blank">
+            <img src="instagram.jpg" alt="Instagram">
+        </a>
+
+        <!-- Agrega más enlaces e iconos según sea necesario -->
+    </div>
+</section>
+
+
+<section id="vision" class="section">
+    <h2>.</h2>
+    <p>.</p>
+
+</section>
+    <footer>
+        <p>&copy; 2023 Servicios de Enfermería</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function sendEmail() {
+            const patientName = document.getElementById('patientName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const location = document.getElementById('location').value;
+            const admissionReason = document.getElementById('admissionReason').value;
+            const patientDateOfBirth = document.getElementById('patientDateOfBirth').value;
+
+            const emailAddress = 'enfermeria24horaszip@gmail.com' ; // Reemplaza con la dirección de correo deseada
+            const subject = 'Pedido de Servicios de Enfermería';
+            const body = `Detalles del pedido:\n\nNombre: ${patientName}\nTeléfono: ${phone}\nCorreo electrónico: ${email}\nUbicación: ${location}\nMotivo de ingreso: ${admissionReason}\nFecha del servicio: ${patientDateOfBirth}`;
+
+            const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoLink;
+        }
+
+        <!-- ... (código anterior) ... -->
+
+
+
+    function redirectToEnfermeriaPayment() {
+        // Obtén el valor seleccionado del servicio de enfermería
+        const enfermeriaService = document.getElementById('enfermeriaService').value;
+
+        // Construye el enlace de pago en función del servicio seleccionado
+        let paymentLink = '';
+
+        switch (enfermeriaService) {
+            case '6horas':
+                paymentLink = 'https://biz.payulatam.com/L0f42ee38985F56';
+                break;
+            case '12horas':
+                paymentLink = 'https://biz.payulatam.com/L0f42eeAD65703B';
+                break;
+            case '24horas':
+                paymentLink = 'https://biz.payulatam.com/L0f42ee937C952A';
+                break;
+            default:
+                // Enlace predeterminado en caso de que no haya coincidencia
+                paymentLink = 'https://biz.payulatam.com/enfermeria-default';
+        }
+
+        // Redirige al enlace de pago específico para el servicio de enfermería
+        window.location.href = paymentLink;
+    }
+    function redirectToOxigenoPayment() {
+            // Obtén el valor seleccionado del servicio de oxígeno
+            const oxigenoService = document.getElementById('oxigenoService').value;
+
+            // Construye el enlace de pago en función del servicio seleccionado
+            let paymentLink = '';
+
+            switch (oxigenoService) {
+                case '1semana':
+                    paymentLink = 'https://biz.payulatam.com/L0f42ee215555C0';
+                    break;
+                case '1mes':
+                    paymentLink = 'https://biz.payulatam.com/L0f42eeF22DFB1D';
+                    break;
+                default:
+                    // Enlace predeterminado en caso de que no haya coincidencia
+                    paymentLink = 'https://pasarelaoxigeno.com/oxigeno-default';
+            }
+
+            // Redirige al enlace de pago específico para el servicio de oxígeno
+            window.location.href = paymentLink;
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
